@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <el-container class="eo-app">
+    <el-header class="eo-header" height="80px">
+      <eo-title-bar></eo-title-bar>
+      <eo-tool-bar></eo-tool-bar>
+    </el-header>
+    <el-container>
+      <el-aside class="eo-left-aside" :width="leftWidth"></el-aside>
+      <el-main class="eo-app-main">
+        <eo-content></eo-content>
+      </el-main>
+      <el-aside class="eo-right-aside" :width="rightWidth"></el-aside>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import EoTitleBar from './components/TitleBar';
+  import EoToolBar from './components/ToolBar';
+  import EoContent from './components/Content';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+  export default {
+    name: 'app',
+    components: {
+      EoTitleBar,
+      EoToolBar,
+      EoContent
+    },
+    data() {
+      return {
+        leftWidth: '240px',
+        rightWidth: '240px'
+      }
+    }
+  };
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

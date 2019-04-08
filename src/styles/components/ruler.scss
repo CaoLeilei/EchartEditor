@@ -1,0 +1,22 @@
+@include b(ruler) {
+
+  position: absolute;
+  display: block;
+  z-index: 10;
+  overflow: hidden;
+  background: #474747;
+  @include when(horizontal) {
+    top: 0;
+    left: 19px;
+    right: 0;
+    height: 19px;
+    border-bottom: 1px solid #666666;
+  }
+  @include when(vertical) {
+    top: 19px;
+    left: 0;
+    bottom: 0;
+    width: 19px;
+    border-right: 1px solid #666666;
+  }
+}
