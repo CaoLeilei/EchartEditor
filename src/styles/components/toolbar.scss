@@ -1,5 +1,43 @@
 @include b(toolbar) {
-  display: flex;
+  display: block;
   height: auto;
   width: 100%;
+  @include e(inner) {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  @include e(button-group) {
+    display: block;
+    vertical-align: baseline;
+  }
+
+  @include e(button) {
+    display: inline-block;
+    vertical-align: middle;
+    width: 45px;
+    text-align: center;
+    font-size: 12px;
+
+    & + .eo-toolbar__button {
+      margin-left: 9px;
+    }
+
+    .eo-button {
+      background: #696868;
+      color: #ffffff;
+      border-color: #7a7a7a;
+      margin-bottom: 8px;
+      &:hover {
+        background: #888888;
+        border-color: #999999;
+      }
+      &.el-button{
+        &.el-button--mini {
+          width: 45px;
+        }
+      }
+    }
+  }
 }

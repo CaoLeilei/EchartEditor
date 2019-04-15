@@ -6,7 +6,7 @@ import './styles/index.scss';
 
 Vue.config.productionTip = false;
 
-Vue.use(ElementUi, {size: 'small'});
+Vue.use(ElementUi, {size: 'mini'});
 
 new Vue({
   render: h => h(App),

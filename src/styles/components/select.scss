@@ -1,0 +1,43 @@
+@include b(select) {
+  .el-input__inner {
+    background: #2e2e2e;
+    border-color: #3e3e3e;
+    color: #c0c4cc;
+    outline: none;
+    &:hover{
+      background: #2a2a2a;
+    }
+    &:focus {
+      border-color: $--color-primary;
+    }
+  }
+  &:hover {
+    .el-input__inner {
+      border-color: #3e3e3e;
+    }
+  }
+}
+@include b(select-dropdown) {
+  background: #2e2e2e;
+  border-color: #3e3e3e;
+  .el-select-dropdown__item {
+    color: #c0c4cc;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+    &:hover,
+    &.hover {
+      background: #2a2a2a;
+    }
+    &.selected {
+      color: #ffffff;
+      font-weight: normal;
+    }
+  }
+}
+.el-popper[x-placement^=bottom] .popper__arrow {
+  border-bottom-color: #3e3e3e;
+  &:after {
+    border-bottom-color: #2e2e2e;
+  }
+}

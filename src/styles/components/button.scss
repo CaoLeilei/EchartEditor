@@ -1,0 +1,8 @@
+@include b(button) {
+  &.el-button {
+    &.el-button--mini {
+      line-height: 14px;
+      padding: 4px 8px;
+    }
+  }
+}

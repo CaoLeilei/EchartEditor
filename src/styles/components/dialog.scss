@@ -1,0 +1,27 @@
+@include b(dialog) {
+
+  .el-dialog {
+    border: 1px solid RGBA(102, 102, 102, .5);
+    background: transparent;
+  }
+
+  .el-dialog__header {
+    padding: 8px 10px;
+    border-bottom: 1px solid #151515;
+    background: #484848;
+  }
+  .el-dialog__title {
+    line-height: 20px;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  .el-dialog__headerbtn {
+    top: 8px;
+    right: 15px;
+  }
+  .el-dialog__body {
+    background: #1b1b1b;
+    color: #ffffff;
+    padding: 0;
+  }
+}

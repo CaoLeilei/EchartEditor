@@ -3,20 +3,47 @@
   position: absolute;
   display: block;
   z-index: 10;
-  overflow: hidden;
   background: #474747;
+  box-sizing: border-box;
   @include when(horizontal) {
     top: 0;
-    left: 19px;
+    left: 17px;
     right: 0;
-    height: 19px;
+    height: 17px;
     border-bottom: 1px solid #666666;
+    &:before {
+      content: " ";
+      position: relative;
+      left: -17px;
+      top: 0;
+      display: block;
+      width: 17px;
+      height: 17px;
+      background: url("../assets/icons/components/ruler/start.png") no-repeat center;
+    }
+    .axis-tick {
+      height: 16px;
+      width: 1px;
+      bottom: 0;
+
+    }
   }
   @include when(vertical) {
-    top: 19px;
+    top: 17px;
     left: 0;
     bottom: 0;
-    width: 19px;
+    width: 17px;
     border-right: 1px solid #666666;
+    .axis-tick {
+      width: 16px;
+      height: 1px;
+      left: auto;
+      right: 0;
+    }
+  }
+  .axis-tick {
+    position: absolute;
+    display: block;
+    background: #666666;
   }
 }
