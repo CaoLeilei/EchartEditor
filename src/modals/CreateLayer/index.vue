@@ -69,23 +69,53 @@
       </div>
     </el-header>
     <el-container class="eo-create-layer__container">
-      <el-main></el-main>
+      <el-main class="eo-create-layer__main">
+        <div class="eo-create-layer__main-inner">
+          <div class="main-title">
+            空白文档预设
+          </div>
+          <div class="template-box">
+            <eo-template-item></eo-template-item>
+            <eo-template-item></eo-template-item>
+            <eo-template-item></eo-template-item>
+            <eo-template-item></eo-template-item>
+            <eo-template-item></eo-template-item>
+            <eo-template-item></eo-template-item>
+          </div>
+        </div>
+      </el-main>
       <el-aside width="310px" class="eo-create-layer__aside">
         <div class="aside-inner">
           <div class="aside-title">基本信息</div>
           <el-form>
             <el-form-item>
-              <el-input class="eo-input title-input" size="large"></el-input>
+              <el-input class="eo-input title-input" size="large"
+                        v-model="title"
+                        :maxlength="22"
+                        @focus="handleInputFocus">
+              </el-input>
             </el-form-item>
             <el-row :gutter="10">
               <el-col :span="12">
                 <el-form-item label="宽度（像素）">
-                  <el-input class="eo-input title-input" v-model="width"></el-input>
+                  <el-input-number class="eo-input title-input"
+                                   v-model="width"
+                                   :controls="false"
+                                   :min="1"
+                                   @blur="handleWidthInputBlur"
+                                   @focus="handleInputFocus">
+                  </el-input-number>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item label="高度（像素）">
-                  <el-input class="eo-input title-input" v-model="height"></el-input>
+                  <el-input-number class="eo-input title-input"
+                                   v-model="height"
+                                   :controls="false"
+                                   :min="1"
+                                   @blur="handleHeightInputBlur"
+                                   @focus="handleInputFocus">
+                  </el-input-number>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -99,8 +129,10 @@
             </el-form-item>
           </el-form>
           <div class="aside-bottom">
-            <el-button type="primary" class="aside-button">创建</el-button>
-            <el-button class="aside-button">取消</el-button>
+            <el-button type="primary" class="aside-button"
+                       @click="handleOkBtnClick">创建</el-button>
+            <el-button class="aside-button"
+                       @click="handleCancelBtnClick">取消</el-button>
           </div>
         </div>
       </el-aside>
@@ -109,14 +141,49 @@
 </template>
 
 <script>
+  import EoTemplateItem from './TemplateItem';
+
+  const DEFAULT_WIDTH = 500;
+  const DEFAULT_HEIGHT = 500;
+
   export default {
     name: 'index',
+    components: {
+      EoTemplateItem
+    },
     data () {
       return {
-        width: 0,
-        height: 0,
+        title: '未标题',
+        width: DEFAULT_WIDTH,
+        oldWidth: DEFAULT_WIDTH,
+        height: DEFAULT_HEIGHT,
+        oldHeight: DEFAULT_HEIGHT,
         background: ''
       };
+    },
+    methods: {
+      handleInputFocus (e) {
+        const $input = e.srcElement;
+        if ($input) {
+          $input.select();
+        }
+      },
+      handleWidthInputBlur () {
+        if (this.width) {
+          this.oldWidth = this.width;
+        } else {
+          this.width = this.oldWidth;
+        }
+      },
+      handleHeightInputBlur () {
+        if (this.height) {
+          this.oldHeight = this.height;
+        } else {
+          this.height = this.oldHeight;
+        }
+      },
+      handleOkBtnClick () {},
+      handleCancelBtnClick () {}
     }
   };
 </script>
