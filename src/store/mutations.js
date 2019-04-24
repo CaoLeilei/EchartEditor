@@ -15,5 +15,8 @@ export default {
   },
   [mutationTypes.UPDATE_BACKGROUND_COLOR] (state, value) {
     state.backgroundColor = value;
+  },
+  [mutationTypes.UPDATE_CHART_LIST] (state, list) {
+    state.chartList = list;
   }
 };

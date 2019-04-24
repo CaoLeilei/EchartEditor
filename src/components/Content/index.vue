@@ -1,5 +1,7 @@
 <template>
   <div class="eo-content">
+<!--    <div class="eo-content__inner">-->
+<!--    </div>-->
     <eo-ruler direction="horizontal"></eo-ruler>
     <eo-ruler direction="vertical"></eo-ruler>
     <div class="eo-content__inner">

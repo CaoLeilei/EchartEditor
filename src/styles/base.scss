@@ -15,6 +15,9 @@ body {
   width: 100%;
   height: 100%;
 }
+@include b(container) {
+  position: relative;
+}
 @include b(header) {
   border-bottom: 1px solid #151515;
   background: #484848;
@@ -35,4 +38,17 @@ body {
 }
 @include b(app-main) {
   padding: 0;
+  @include e(inner) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding-top: 32px;
+    box-sizing: border-box;
+  }
+  @include e(tabs) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 }

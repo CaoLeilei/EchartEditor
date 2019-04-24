@@ -1,0 +1,35 @@
+@include b(spliter) {
+  position: absolute;
+  z-index: 99;
+  @include when(vertical) {
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    cursor: ew-resize;
+    .spliter-inner {
+      position: absolute;
+      top: 0;
+      left: 3px;
+      display: block;
+      width: 4px;
+      height: 100%;
+    }
+  }
+  @include when(right) {
+    margin-right: -5px;
+  }
+  @include when(draging) {
+    .spliter-inner {
+      background: $--color-primary;
+    }
+  }
+}
+@include b(spliter-mask) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: RGBA(255, 255, 255, .1);
+  z-index: 99;
+}
