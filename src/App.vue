@@ -12,15 +12,16 @@
           <eo-content></eo-content>
         </div>
       </el-main>
-      <el-aside class="eo-right-aside" :width="rightWidth"></el-aside>
-      <div class="eo-spliter-mask" v-show="draging">
-      </div>
-      <!-- 拖拽条 -->
-      <div class="eo-spliter is-vertical is-right" :style="spliterStyle"
-           :class="{'is-draging': draging}"
-           @mousedown="handleSpliterMouseDown">
-        <div class="spliter-inner"></div>
-      </div>
+      <el-aside class="eo-right-aside" :width="rightWidth + 'px'"></el-aside>
+      <eo-split position="right" :splitSize="rightWidth"></eo-split>
+<!--      <div class="eo-spliter-mask" v-show="draging">-->
+<!--      </div>-->
+<!--      &lt;!&ndash; 拖拽条 &ndash;&gt;-->
+<!--      <div class="eo-spliter is-vertical is-right" :style="spliterStyle"-->
+<!--           :class="{'is-draging': draging}"-->
+<!--           @mousedown="handleSpliterMouseDown">-->
+<!--        <div class="spliter-inner"></div>-->
+<!--      </div>-->
     </el-container>
     <el-dialog title="创建图表"
                class="eo-dialog"
@@ -40,6 +41,7 @@
 </template>
 
 <script>
+  import EoSplit from './components/Split';
   import EoTitleBar from './components/TitleBar';
   import EoToolBar from './components/ToolBar';
   import EoTabs from './components/Tabs';
@@ -50,6 +52,7 @@
   export default {
     name: 'app',
     components: {
+      EoSplit,
       EoTitleBar,
       EoToolBar,
       EoTabs,
@@ -60,7 +63,7 @@
     data() {
       return {
         leftWidth: '240px',
-        rightWidth: '400px',
+        rightWidth: 400,
         createModelVisible: false,
         colorPickerModalVisible: false,
         draging: false
@@ -74,16 +77,16 @@
       }
     },
     mounted () {
-      const {
-        handleWindowMouseUp
-      } = this;
-      window.addEventListener('mouseup', handleWindowMouseUp);
+      // const {
+      //   handleWindowMouseUp
+      // } = this;
+      // window.addEventListener('mouseup', handleWindowMouseUp);
     },
     beforeDestroy () {
-      const {
-        handleWindowMouseUp
-      } = this;
-      window.removeEventListener('mouseup', handleWindowMouseUp);
+      // const {
+      //   handleWindowMouseUp
+      // } = this;
+      // window.removeEventListener('mouseup', handleWindowMouseUp);
     },
     methods: {
       handleToolbarCreate () {
@@ -91,9 +94,24 @@
       },
       handleSpliterMouseDown (e) {
         this.draging = true;
+
+        window.addEventListener('mousemove', this.handleSpliterDragging);
+        window.addEventListener('touchmove', this.handleSpliterDragging);
+        window.addEventListener('mouseup', this.handleDragEnd);
+        window.addEventListener('touchend', this.handleDragEnd);
+        window.addEventListener('contextmenu', this.handleDragEnd);
       },
-      handleWindowMouseUp () {
+      handleSpliterDragging () {},
+      handleDragEnd (e) {
+        console.log('handleDragEnd')
         this.draging = false;
+        setTimeout(() => {
+          window.removeEventListener('mousemove', this.handleSpliterDragging);
+          window.removeEventListener('touchmove', this.handleSpliterDragging);
+          window.removeEventListener('mouseup', this.handleDragEnd);
+          window.removeEventListener('touchend', this.handleDragEnd);
+          window.removeEventListener('contextmenu', this.handleDragEnd);
+        });
       }
     }
   };
