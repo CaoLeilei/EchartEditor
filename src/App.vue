@@ -13,7 +13,7 @@
         </div>
       </el-main>
       <el-aside class="eo-right-aside" :width="rightWidth + 'px'"></el-aside>
-      <eo-split position="right" :splitSize="rightWidth"></eo-split>
+      <eo-split position="right" :splitSize="rightWidth" @dragend="handleSpliteDragEnd"></eo-split>
 <!--      <div class="eo-spliter-mask" v-show="draging">-->
 <!--      </div>-->
 <!--      &lt;!&ndash; 拖拽条 &ndash;&gt;-->
@@ -92,26 +92,8 @@
       handleToolbarCreate () {
         this.createModelVisible = true;
       },
-      handleSpliterMouseDown (e) {
-        this.draging = true;
-
-        window.addEventListener('mousemove', this.handleSpliterDragging);
-        window.addEventListener('touchmove', this.handleSpliterDragging);
-        window.addEventListener('mouseup', this.handleDragEnd);
-        window.addEventListener('touchend', this.handleDragEnd);
-        window.addEventListener('contextmenu', this.handleDragEnd);
-      },
-      handleSpliterDragging () {},
-      handleDragEnd (e) {
-        console.log('handleDragEnd')
-        this.draging = false;
-        setTimeout(() => {
-          window.removeEventListener('mousemove', this.handleSpliterDragging);
-          window.removeEventListener('touchmove', this.handleSpliterDragging);
-          window.removeEventListener('mouseup', this.handleDragEnd);
-          window.removeEventListener('touchend', this.handleDragEnd);
-          window.removeEventListener('contextmenu', this.handleDragEnd);
-        });
+      handleSpliteDragEnd (size) {
+        this.rightWidth = size;
       }
     }
   };

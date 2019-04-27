@@ -18,13 +18,25 @@
       splitSize: {
         type: Number,
         default: 0
+      },
+      minSize: {
+        type: Number,
+        default: 250
+      },
+      maxSize: {
+        type: Number,
+        default: 800
       }
     },
     data () {
       return {
         dragging: false,
         size: 0,
-        splitMask: null
+        splitMask: null,
+        orgPointX: 0,
+        orgPointY: 0,
+        desPointX: 0,
+        desPointY: 0
       };
     },
     created() {
@@ -77,14 +89,12 @@
             break;
         }
         return _style;
-
       },
       direction () {
         return (this.position === 'left' || this.position === 'right') ? 'vertical' : 'horizontal';
       }
     },
     mounted () {
-      console.log(this);
       this.appendSplitMask();
     },
     beforeDestroy () {
@@ -109,16 +119,46 @@
       removeSplitMask () {
         this.splitMask.remove();
       },
-      handleMouseDown () {
+      computeSize () {
+        let moveXSize = this.desPointX - this.orgPointX;
+        let moveYSize = this.desPointY - this.orgPointY;
+        switch (this.position) {
+          case 'left':
+            this.size += moveXSize;
+            break;
+          case 'right':
+            this.size -= moveXSize;
+            break;
+          case 'top':
+            this.size += moveYSize;
+            break;
+          case 'bottom':
+            this.size -= moveYSize;
+        }
+        if (this.size < this.minSize) {
+          this.size = this.minSize;
+        }
+        if (this.size > this.maxSize) {
+          this.size = this.maxSize;
+        }
+      },
+      handleMouseDown (event) {
         this.dragging = true;
         this.splitMask.style.display = 'block';
+        this.orgPointX = event.clientX;
+        this.orgPointY = event.clientY;
         window.addEventListener('mousemove', this.handleSpliterDragging);
         window.addEventListener('touchmove', this.handleSpliterDragging);
         window.addEventListener('mouseup', this.handleDragEnd);
         window.addEventListener('touchend', this.handleDragEnd);
         window.addEventListener('contextmenu', this.handleDragEnd);
       },
-      handleSpliterDragging () {
+      handleSpliterDragging (event) {
+        this.desPointX = event.clientX;
+        this.desPointY = event.clientY;
+        this.computeSize();
+        this.orgPointX = this.desPointX;
+        this.orgPointY = this.desPointY;
         this.$emit('dragging', this.size);
       },
       handleDragEnd (e) {
