@@ -12,16 +12,10 @@
           <eo-content></eo-content>
         </div>
       </el-main>
-      <el-aside class="eo-right-aside" :width="rightWidth + 'px'"></el-aside>
+      <el-aside class="eo-right-aside" :width="rightWidth + 'px'">
+        <eo-property-groups></eo-property-groups>
+      </el-aside>
       <eo-split position="right" :splitSize="rightWidth" @dragend="handleSpliteDragEnd"></eo-split>
-<!--      <div class="eo-spliter-mask" v-show="draging">-->
-<!--      </div>-->
-<!--      &lt;!&ndash; 拖拽条 &ndash;&gt;-->
-<!--      <div class="eo-spliter is-vertical is-right" :style="spliterStyle"-->
-<!--           :class="{'is-draging': draging}"-->
-<!--           @mousedown="handleSpliterMouseDown">-->
-<!--        <div class="spliter-inner"></div>-->
-<!--      </div>-->
     </el-container>
     <el-dialog title="创建图表"
                class="eo-dialog"
@@ -41,13 +35,14 @@
 </template>
 
 <script>
-  import EoSplit from './components/Split';
-  import EoTitleBar from './components/TitleBar';
-  import EoToolBar from './components/ToolBar';
-  import EoTabs from './components/Tabs';
-  import EoContent from './components/Content';
-  import EoColorPicker from './components/ColorPicker';
-  import EoCreatLayer from './modals/CreateLayer';
+  import EoSplit from './components/Split/Index';
+  import EoTitleBar from './components/TitleBar/Index';
+  import EoToolBar from './components/ToolBar/Index';
+  import EoTabs from './components/Tabs/Index';
+  import EoContent from './components/Content/Index';
+  import EoPropertyGroups from './components/PropertyGroups/Index';
+  import EoColorPicker from './components/ColorPicker/Index';
+  import EoCreatLayer from './modals/CreateLayer/Index';
 
   export default {
     name: 'app',
@@ -57,6 +52,7 @@
       EoToolBar,
       EoTabs,
       EoContent,
+      EoPropertyGroups,
       EoColorPicker,
       EoCreatLayer
     },
