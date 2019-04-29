@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import EoRuler from '../Ruler';
-  import EoCanvas from '../Canvas';
+  import EoRuler from '../Ruler/Index';
+  import EoCanvas from '../Canvas/Index';
 
   export default {
     name: 'EoContent',

@@ -161,7 +161,7 @@
         this.orgPointY = this.desPointY;
         this.$emit('dragging', this.size);
       },
-      handleDragEnd (e) {
+      handleDragEnd () {
         this.dragging = false;
         this.splitMask.style.display = 'none';
         setTimeout(() => {

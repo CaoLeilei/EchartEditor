@@ -1,0 +1,60 @@
+@include b(property-groups) {
+
+  .el-collapse {
+    border-top: none;
+    border-bottom: none;
+  }
+  .el-collapse-item__header {
+    height: 35px;
+    line-height: 35px;
+    background: #454647;
+    color: #ddd;
+    font-size: 14px;
+    padding-left: 15px;
+    border-color: #333;
+    text-transform: uppercase;
+    &:focus {
+      color: #ddd !important;
+    }
+  }
+  .el-collapse-item__wrap {
+    background: transparent;
+    border-bottom-color: #333;
+  }
+  .el-collapse-item__content {
+    box-sizing: border-box;
+    padding: 10px 10px;
+    background: transparent;
+  }
+  .el-form-item {
+    &.el-form-item--mini {
+      margin-bottom: 5px;
+    }
+  }
+  .el-form-item__label {
+    font-size: 12px;
+    line-height: 24px;
+    color: #888888;
+    padding-bottom: 0;
+  }
+  .el-input--mini {
+    .el-input__inner {
+      height: 26px;
+      line-height: 24px;
+    }
+  }
+  .el-input__inner {
+    background: #222;
+    border-color: #3e3e3e;
+    color: #c0c4cc;
+    outline: none;
+
+    &:hover {
+      background: #1f1f1f;
+    }
+
+    &:focus {
+      border-color: $--color-primary;
+    }
+  }
+}
