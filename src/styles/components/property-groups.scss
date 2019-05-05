@@ -1,5 +1,8 @@
 @include b(property-groups) {
-
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   .el-collapse {
     border-top: none;
     border-bottom: none;
@@ -25,6 +28,7 @@
     box-sizing: border-box;
     padding: 10px 10px;
     background: transparent;
+    color: #888888;
   }
   .el-form-item {
     &.el-form-item--mini {

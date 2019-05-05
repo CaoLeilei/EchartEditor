@@ -1,0 +1,13 @@
+@include b(padding) {
+  @include e(header) {
+    margin-bottom: 5px;
+  }
+  @include e(inner) {
+    border: 1px solid #3e3e3e;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    background: #272727;
+    //#282828
+  }
+}
