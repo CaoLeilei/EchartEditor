@@ -61,7 +61,7 @@
         leftWidth: '240px',
         rightWidth: 400,
         createModelVisible: false,
-        colorPickerModalVisible: false,
+        colorPickerModalVisible: true,
         draging: false
       }
     },

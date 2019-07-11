@@ -16,22 +16,49 @@
       align-items: center;
     }
     .color-panel {
+      position: relative;
       width: 256px;
       height: 256px;
       background: #ffffff;
     }
+    .color-panel-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      &.white {
+        z-index: 1;
+        background: -webkit-gradient(linear,left top,right top,color-stop(0%,#fff),color-stop(100%,rgba(255,255,255,0)));
+        background: linear-gradient(to right,#fff 0%,rgba(255,255,255,0) 100%);
+      }
+      &.black {
+        z-index: 2;
+        background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,transparent),color-stop(100%,#000));
+        background: linear-gradient(to bottom,transparent 0%,#000 100%);
+      }
+    }
     .color-bar {
       position: relative;
-      width: 30px;
+      width: 16px;
       height: 256px;
       box-sizing: border-box;
-      padding-left: 14px;
+      margin-left: 14px;
+      &.opacity {
+        background: url("../assets/background/opacity-bg.png");
+      }
     }
     .color-bar-inner {
       position: relative;
       width: 16px;
       height: 256px;
-      background: linear-gradient(180deg,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)
+      background: linear-gradient(to bottom,red 0,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,red)
+    }
+    .color-bar-opacity {
+      position: relative;
+      width: 16px;
+      height: 256px;
+      background: linear-gradient(to bottom, RGBA(0,0,0,0), RGBA(255, 255, 255, 255))
     }
 
     .color-bar-pointer {
