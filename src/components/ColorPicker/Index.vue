@@ -7,9 +7,7 @@
             <div class="color-panel-inner white"></div>
             <div class="color-panel-inner black"></div>
           </div>
-          <div class="color-bar">
-            <div class="color-bar-inner"></div>
-          </div>
+          <eo-color-picker-bar></eo-color-picker-bar>
           <div class="color-bar opacity">
             <div class="color-bar-opacity" :style="opacityBarStyle"></div>
             <div class="color-bar-pointer"></div>
@@ -88,9 +86,13 @@
 
 <script>
   import { Color} from '../../common/color';
+  import EoColorPickerBar from './ColorPickerBar';
 
   export default {
     name: 'index',
+    components: {
+      EoColorPickerBar
+    },
     data () {
       return {
         hexColor: '#ff0000',

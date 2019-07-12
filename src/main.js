@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import ElementUi from 'element-ui';
-import store from './store/Index';
+import store from './store/index';
 import App from './App.vue';
 import './assets/styles/element/index.css';
 import './styles/index.scss';

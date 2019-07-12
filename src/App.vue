@@ -2,7 +2,7 @@
   <el-container class="eo-app">
     <el-header class="eo-header" height="80px">
       <eo-title-bar></eo-title-bar>
-      <eo-tool-bar @create="handleToolbarCreate"></eo-tool-bar>
+      <eo-tool-bar @create="handleToolbarCreate" @colorPick="handleColorPick"></eo-tool-bar>
     </el-header>
     <el-container class="eo-container">
 <!--      <el-aside class="eo-left-aside" :width="leftWidth"></el-aside>-->
@@ -35,14 +35,15 @@
 </template>
 
 <script>
-  import EoSplit from './components/Split/Index';
-  import EoTitleBar from './components/TitleBar/Index';
-  import EoToolBar from './components/ToolBar/Index';
-  import EoTabs from './components/Tabs/Index';
-  import EoContent from './components/Content/Index';
-  import EoPropertyGroups from './components/PropertyGroups/Index';
-  import EoColorPicker from './components/ColorPicker/Index';
-  import EoCreatLayer from './modals/CreateLayer/Index';
+  import EoSplit from './components/Split/index';
+  import EoTitleBar from './components/TitleBar/index';
+  import EoToolBar from './components/ToolBar/index';
+  import EoTabs from './components/Tabs/index';
+  import EoContent from './components/Content/index';
+  import EoPropertyGroups from './components/PropertyGroups/Index'
+  // import EoPropertyGroups from './components/PropertyGroups/index';
+  import EoColorPicker from './components/ColorPicker/index';
+  import EoCreatLayer from './modals/CreateLayer/index';
 
   export default {
     name: 'app',
@@ -90,6 +91,9 @@
       },
       handleSpliteDragEnd (size) {
         this.rightWidth = size;
+      },
+      handleColorPick () {
+        this.colorPickerModalVisible = true;
       }
     }
   };

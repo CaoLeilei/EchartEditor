@@ -7,7 +7,7 @@
   //color: #999999;
 
   @include e(main) {
-    padding: 0;
+    padding: 10px 0 0;
 
     .color-main {
       position: relative;
@@ -85,6 +85,7 @@
   }
   @include e(aside) {
     overflow: hidden;
+    padding-top: 10px;
     .aside-inner {
 
     }

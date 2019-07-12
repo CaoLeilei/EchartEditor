@@ -7,7 +7,7 @@
           <span>新建</span>
         </div>
         <div class="eo-toolbar__button">
-          <el-button class="eo-button eo-toolbar__button">aaa</el-button>
+          <el-button class="eo-button eo-toolbar__button" @click="handleColorPickBtnClick">颜色</el-button>
           <span>数据</span>
         </div>
       </div>
@@ -30,6 +30,9 @@
     methods: {
       handleCreateBtnClick () {
         this.$emit('create');
+      },
+      handleColorPickBtnClick () {
+        this.$emit('colorPick');
       }
     }
   };
