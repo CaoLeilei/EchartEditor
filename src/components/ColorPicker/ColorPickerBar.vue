@@ -3,7 +3,7 @@
     <div class="color-bar-inner"></div>
     <div class="color-bar-pointer"
          :style="pointerStyle"
-         @mousedown="handleMouseDown"></div>
+         @mousedown="onMouseDown"></div>
   </div>
 </template>
 
@@ -25,26 +25,26 @@
       }
     },
     methods: {
-      handleMouseDown(event) {
+      onMouseDown(event) {
         const {
-          handleDragging,
-          handleDragEnd
+          onDragging,
+          onDragEnd
         } = this;
         this.dragging = true;
         this.orgY = event.clientY;
-        window.addEventListener('mousemove', handleDragging);
-        window.addEventListener('mouseup', handleDragEnd);
+        window.addEventListener('mousemove', onDragging);
+        window.addEventListener('mouseup', onDragEnd);
       },
-      handleDragEnd() {
+      onDragEnd() {
         this.dragging = false;
         const {
-          handleDragging,
-          handleDragEnd
+          onDragging,
+          onDragEnd
         } = this;
-        window.removeEventListener('mousemove', handleDragging);
-        window.removeEventListener('moustup', handleDragEnd);
+        window.removeEventListener('mousemove', onDragging);
+        window.removeEventListener('mouseup', onDragEnd);
       },
-      handleDragging(event) {
+      onDragging(event) {
         let destY = event.clientY;
         let moverDesc = destY - this.orgY;
         this.pointerPos += moverDesc;

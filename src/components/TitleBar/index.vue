@@ -1,5 +1,5 @@
 <template>
-  <div class="eo-titlebar">Echarts Option</div>
+  <div class="eo-title-bar">Echarts Option</div>
 </template>
 
 <script>
